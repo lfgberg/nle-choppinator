@@ -121,15 +121,15 @@ def or_what(host, ssh_key_file, webserver):
     ssh.exec_command(
         "sed -i 's/^#\?PasswordAuthentication .*/PasswordAuthentication no/' /etc/ssh/sshd_config"
     )
-    ssh.exec_command("mkdir /site; cd /site")
-    ssh.exec_command(f"wget --recursive --no-parent {webserver}/site/")
-    ssh.exec_command("apt install -y nginx")
-    ssh.exec_command("mv ./nginx.conf /etc/nginx/sites-available/giga")
+    ssh.exec_command("sudo mkdir -p /site")
+    ssh.exec_command(f"wget --recursive --no-parent -P /site {webserver}/site/")
+    ssh.exec_command("sudo apt install -y nginx")
+    ssh.exec_command("sudo mv /site/nginx.conf /etc/nginx/sites-available/giga")
     ssh.exec_command(
         "sudo ln -s /etc/nginx/sites-available/giga /etc/nginx/sites-enabled/"
     )
     ssh.exec_command("sudo systemctl restart nginx")
-    ssh.exec_command("systemctl restart sshd")
+    ssh.exec_command("sudo systemctl restart sshd")
 
 
 def parse_config(file) -> dict:
