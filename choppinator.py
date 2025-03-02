@@ -121,14 +121,6 @@ def or_what(host, ssh_key_file, webserver):
     ssh.exec_command(
         "sed -i 's/^#\?PasswordAuthentication .*/PasswordAuthentication no/' /etc/ssh/sshd_config"
     )
-    ssh.exec_command("sudo mkdir -p /site")
-    ssh.exec_command(f"wget --recursive --no-parent -P /site {webserver}/site/")
-    ssh.exec_command("sudo apt install -y nginx")
-    ssh.exec_command("sudo mv /site/nginx.conf /etc/nginx/sites-available/giga")
-    ssh.exec_command(
-        "sudo ln -s /etc/nginx/sites-available/giga /etc/nginx/sites-enabled/"
-    )
-    ssh.exec_command("sudo systemctl restart nginx")
     ssh.exec_command("sudo systemctl restart sshd")
 
 
@@ -220,7 +212,7 @@ if __name__ == "__main__":
     )
 
     # Config
-    config = parse_config("../config.yaml")
+    config = parse_config("./config.yaml")
     target = f"http://{config["target"]["host"]}:{config["target"]["port"]}"
     webserver = (
         f"http://{config["attacker"]["host"]}:{config["attacker"]["webserver_port"]}"
