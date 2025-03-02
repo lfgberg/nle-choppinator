@@ -122,7 +122,7 @@ def or_what(host, ssh_key_file, webserver):
         "sed -i 's/^#\?PasswordAuthentication .*/PasswordAuthentication no/' /etc/ssh/sshd_config"
     )
     ssh.exec_command("mkdir /site; cd /site")
-    ssh.exec_command(f"wget --recursive --no-parent {webserver}/site")
+    ssh.exec_command(f"wget --recursive --no-parent {webserver}/site/")
     ssh.exec_command("apt install -y nginx")
     ssh.exec_command("mv ./nginx.conf /etc/nginx/sites-available/giga")
     ssh.exec_command(
