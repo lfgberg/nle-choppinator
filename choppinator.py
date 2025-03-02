@@ -220,7 +220,7 @@ if __name__ == "__main__":
     )
 
     # Config
-    config = parse_config("config.yaml")
+    config = parse_config("../config.yaml")
     target = f"http://{config["target"]["host"]}:{config["target"]["port"]}"
     webserver = (
         f"http://{config["attacker"]["host"]}:{config["attacker"]["webserver_port"]}"
