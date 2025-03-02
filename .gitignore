@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+*/.bolt/
+node_modules/
+
 # C extensions
 *.so
 
@@ -10,8 +13,8 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
 downloads/
+dist/
 eggs/
 .eggs/
 lib/

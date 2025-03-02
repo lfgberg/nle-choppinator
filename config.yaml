@@ -1,0 +1,10 @@
+---
+target:
+  host: "10.69.69.204"
+  port: 8081
+attacker:
+  host: "10.69.69.111"
+  webserver_port: 8000
+  payload: "./sigma"
+  ssh_key_file: "/home/kali/.ssh/id_rsa"
+koth_id: "cd1a5cf3-70b4-403b-a60e-cd883667dfa2"
